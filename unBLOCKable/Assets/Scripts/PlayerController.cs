@@ -7,12 +7,12 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 10;
     private Rigidbody rb;
-    private float movementX;
-    private Vector3 movement;
-
-    private Vector3 playerTransformPosition;
-
-
+    public Vector3 forwardSpeedV3 = new Vector3(0.5f, 0, 0);
+    public Vector3 moveLeftDistanceV3 = new Vector3(0, 0, 1.00f);
+    public Vector3 moveRightDistanceV3 = new Vector3(0, 0, -1.00f);
+    public Vector3 moveUpDistanceV3 = new Vector3(0, 1.00f, 0);
+    public Vector3 moveDownDistanceV3 = new Vector3(0, -1.00f, 0);
+    public Vector3 moveForwardDistanceV3 = new Vector3(1.00f, 0, 0);
 
 
     // Start is called before the first frame update
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log("FixedUpdate Called");
         //rb.AddForce(movement * speed);
-        transform.position += new Vector3(0.5f, 0, 0);
+        transform.position += forwardSpeedV3;
 
 
 
@@ -48,6 +48,36 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnMoveLeft() 
+    {
+        transform.position += new Vector3(0, 0, 1.00f);
+        Debug.Log("OnMoveLeft");
+    }
+
+    private void OnMoveRight()
+    {
+        transform.position += moveRightDistanceV3;
+        Debug.Log("OnMoveRight");
+
+    }
+
+    private void OnMoveUp()
+    {
+        transform.position += moveUpDistanceV3;
+
+    }
+
+    private void OnMoveDown()
+    {
+        transform.position += moveDownDistanceV3;
+
+    }
+
+    private void OnMoveForward()
+    {
+        transform.position += moveForwardDistanceV3;
+
+    }
 
     // Update is called once per frame
     void Update()
