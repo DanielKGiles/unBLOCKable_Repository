@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
     private void OnMoveRight()
     {
         transform.position += moveRightDistanceV3;
+        //transform.position += Vector3.Lerp(transform.position, moveRightDistanceV3, 0.7f);
         Debug.Log("OnMoveRight");
 
     }
