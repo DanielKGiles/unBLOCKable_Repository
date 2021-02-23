@@ -50,12 +50,12 @@ public class GameManager : Singleton<GameManager>
     // Update is called once per frame
     void Update()
     {
-        checkWinLose(); 
+        //checkWinLose(); 
     }
 
     private void checkWinLose()
     {
-        Debug.Log(player.transform.position[0]);
+        //Debug.Log(player.transform.position[0]);
         //Debug.Log(RestartButton.transform.position[0]);
         //if (player.transform.position[0] > 200) {
 

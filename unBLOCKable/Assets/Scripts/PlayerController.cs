@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     private void OnMoveLeft() 
     {
         transform.position += new Vector3(0, 0, 1.00f);
-        Debug.Log("OnMoveLeft");
+        Debug.Log("OnMoveLeft UPDATED");
     }
 
     private void OnMoveRight()
