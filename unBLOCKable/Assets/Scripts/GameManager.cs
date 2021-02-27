@@ -7,8 +7,11 @@ using TMPro;
 public class GameManager : Singleton<GameManager>
 {
     public GameObject player;
+    public ParticleSystem CollisionParticleEffect;
+
     public GameObject RestartButton;
     private int currentLevelIndex = 0;
+
 
 
     // Start is called before the first frame update
@@ -32,14 +35,17 @@ public class GameManager : Singleton<GameManager>
 
     }
 
-    public static void RestartLevel()
+    public void RestartLevel()
     {
+        //DisplayCollisionParticleEffect();
+        //DestroyGameObject(this.player);
         LoadLevel(Instance.currentLevelIndex);
     }
 
-    public static void LoadLevel(int levelIndexToLoad)
+    public void LoadLevel(int levelIndexToLoad)
     {
         SceneManager.LoadScene(levelIndexToLoad);
+
 
     }
 
@@ -54,7 +60,7 @@ public class GameManager : Singleton<GameManager>
         //checkWinLose(); 
     }
 
-    private void checkWinLose()
+    private static void checkWinLose()
     {
         //Debug.Log(player.transform.position[0]);
         //Debug.Log(RestartButton.transform.position[0]);
@@ -65,9 +71,23 @@ public class GameManager : Singleton<GameManager>
         //}
     }
 
-    private void DestroyGameObject(GameObject gameObject) 
+    public void DisplayCollisionParticleEffect(Transform playerPosition, GameObject player)
     {
-        Destroy(gameObject);
-    
+        Debug.Log("Object is about to be instantiated");
+        Vector3 particleEffectOffset = new Vector3(-1.00f, 0.00f, 0.00f);
+        Instantiate(CollisionParticleEffect, playerPosition.position, Quaternion.identity);
+        Debug.Log("Object was instantiated");
+        DestroyGameObject(player);
     }
+
+    private static void DestroyGameObject(GameObject gameObject)
+    {
+        if (gameObject != null)
+        {
+            Destroy(gameObject);
+        }
+
+    }
+
+   
 }

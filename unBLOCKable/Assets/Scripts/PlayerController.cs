@@ -14,6 +14,10 @@ public class PlayerController : MonoBehaviour
     public Vector3 moveDownDistanceV3 = new Vector3(0, -1.00f, 0);
     public Vector3 moveForwardDistanceV3 = new Vector3(1.00f, 0, 0);
 
+    public GameManager GameManager;
+
+    public GameObject[] StandardBlocks;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +31,6 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue)
     {
         Debug.Log("OnMove");
-
-        //Vector2 movementVector = movementValue.Get<Vector2>();
-        
-        //movement = new Vector3(movementVector.x, 0.0f, 0.0f);
-
-
         
     }
 
@@ -84,5 +82,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider objectCollider)
+    {
+        Debug.Log("TriggerActivated");
+        if (objectCollider.gameObject.CompareTag("StandardBlockCollisionTriggerCollider"))
+        {
+            GameManager.DisplayCollisionParticleEffect(objectCollider.gameObject.transform, this.gameObject);
+        }
     }
 }
