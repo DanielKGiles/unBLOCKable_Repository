@@ -3,7 +3,11 @@ guid: 89fbdf9383d735a418ad20f365e468e6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {instanceID: 0}
+  - RestartButton: {instanceID: 0}
+  - TrackSegment1: {fileID: 6335903211071318862, guid: fb5fd3c5993a8b64298cfc94fef0da08,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

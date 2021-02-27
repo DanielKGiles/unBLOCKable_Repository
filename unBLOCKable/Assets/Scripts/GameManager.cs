@@ -24,6 +24,7 @@ public class GameManager : Singleton<GameManager>
 
     public void InitLevel()
     {
+
         currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
         //LoadLevel(currentLevelIndex);
 
@@ -62,5 +63,11 @@ public class GameManager : Singleton<GameManager>
         //    RestartButton.SetActive(true);
 
         //}
+    }
+
+    private void DestroyGameObject(GameObject gameObject) 
+    {
+        Destroy(gameObject);
+    
     }
 }
