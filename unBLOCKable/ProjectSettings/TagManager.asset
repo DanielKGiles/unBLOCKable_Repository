@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StandardBlockCollisionTriggerCollider
   - StandardBlockLandedOnTopTriggerCollider
+  - CherryPickupTrigger
   layers:
   - Default
   - TransparentFX
