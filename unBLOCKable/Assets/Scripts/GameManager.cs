@@ -8,8 +8,9 @@ public class GameManager : Singleton<GameManager>
 {
     public GameObject player;
     public ParticleSystem CollisionParticleEffect;
+    public UIManager UIManager;
 
-    public GameObject RestartButton;
+    //public GameObject RestartButton;
     private int currentLevelIndex = 0;
 
 
@@ -17,7 +18,10 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        InitLevel();
+        currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
+        //LoadLevel(currentLevelIndex);
+        Debug.Log("Game was started in game manager");
+        //RestartButton.SetActive(false);
     }
 
     //void Awake()
@@ -25,34 +29,30 @@ public class GameManager : Singleton<GameManager>
     //    DontDestroyOnLoad(player);
     //}
 
-    public void InitLevel()
-    {
-
-        currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
-        //LoadLevel(currentLevelIndex);
-
-        RestartButton.SetActive(true);
-
-    }
-
     public void RestartLevel()
     {
         //DisplayCollisionParticleEffect();
         //DestroyGameObject(this.player);
+        Debug.Log("RestartLevel() was called");
+        
         LoadLevel(Instance.currentLevelIndex);
+        
     }
 
     public void LoadLevel(int levelIndexToLoad)
     {
         SceneManager.LoadScene(levelIndexToLoad);
+        //RestartButton.SetActive(false);
+        UIManager.HideRestartMenu();
 
 
     }
 
-    private void OnRestart()
-    {
-        SceneManager.LoadScene(1);
-    }
+    //private void OnRestart()
+    //{
+    //    SceneManager.LoadScene(1);
+    //    RestartButton.SetActive(false);
+    //}
 
     // Update is called once per frame
     void Update()
@@ -73,11 +73,26 @@ public class GameManager : Singleton<GameManager>
 
     public void DisplayCollisionParticleEffect(Transform playerPosition, GameObject player)
     {
-        Debug.Log("Object is about to be instantiated");
+        //Debug.Log("Object is about to be instantiated");
         Vector3 particleEffectOffset = new Vector3(-1.00f, 0.00f, 0.00f);
         Instantiate(CollisionParticleEffect, playerPosition.position, Quaternion.identity);
-        Debug.Log("Object was instantiated");
-        DestroyGameObject(player);
+        //Debug.Log("Object was instantiated");
+        //DestroyGameObject(player);
+        
+
+        EndRun();
+        
+    }
+
+    private void EndRun()
+    {
+        UIManager.DisplayRestartMenu();
+        //if (RestartButton != null) 
+        //{
+        //    RestartButton.SetActive(true);
+
+        //}
+        player.SetActive(false);
     }
 
     private static void DestroyGameObject(GameObject gameObject)

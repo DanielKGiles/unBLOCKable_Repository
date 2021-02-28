@@ -26,7 +26,9 @@ public class PlayerController : MonoBehaviour
 
     private bool currentlyLerping = false;
 
-    public float lerpDuration = 0.01f;
+    public static float lerpDurationOriginalValue = 0.01f;
+
+    public float lerpDuration = lerpDurationOriginalValue;
 
     public GameObject TestCube;
 
@@ -37,17 +39,27 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Started the game");
+        //Debug.Log("Started the game");
 
         rb = GetComponent<Rigidbody>();
 
         //Vector3 playerTransformPosition = transform.position;
         Vector3 targetPosition = transform.position;
+
+
     }
     void OnMove(InputValue movementValue)
     {
-        Debug.Log("OnMove");
+        //Debug.Log("OnMove");
         
+    }
+
+    public Transform transformGetSet 
+    {
+        get 
+        {
+            return transform;
+        }
     }
 
     private void FixedUpdate()
@@ -63,22 +75,26 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    IEnumerator LerpPosition(float duration)
+    IEnumerator LerpPosition()
     {
         currentlyLerping = true;
 
         float time = 0;
         //Vector3 startPosition = transform.position;
-        Debug.Log(targetPosition);
+        //Debug.Log(targetPosition);
 
-        while (time < duration)
+        while (time < lerpDuration)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position[0], transform.position[1], targetPosition[2]), time / duration);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position[0], transform.position[1], targetPosition[2]), time / lerpDuration);
             time += Time.deltaTime;
             yield return null;
+            //Debug.Log("while loop ran");
         }
+        
         transform.position = new Vector3(transform.position[0], transform.position[1], targetPosition[2]);
         currentlyLerping = false;
+        lerpDuration = lerpDurationOriginalValue;
+
     }
 
 
@@ -86,29 +102,38 @@ public class PlayerController : MonoBehaviour
     {
         //transform.position += new Vector3(0, 0, 1.00f);
         targetPosition = targetPosition + new Vector3(0, 0, 1.00f);
+        Debug.Log(lerpDuration);
+
+        if (currentlyLerping == true)
+        {
+            lerpDuration = lerpDuration + lerpDurationOriginalValue;
+        }
         if (currentlyLerping == false) 
         {
-        
-        StartCoroutine(LerpPosition(lerpDuration));
+            StartCoroutine(LerpPosition());
 
         }
-        Debug.Log("OnMoveLeft UPDATED");
+        //Debug.Log("OnMoveLeft UPDATED");
     }
 
     private void OnMoveRight()
     {
         //transform.position += moveRightDistanceV3;
-        Debug.Log(targetPosition);
+        //Debug.Log(targetPosition);
         targetPosition = targetPosition + moveRightDistanceV3;
+        if (currentlyLerping == true) 
+        {
+            lerpDuration = lerpDuration + lerpDurationOriginalValue;
+        }
         if (currentlyLerping == false)
         {
 
-            StartCoroutine(LerpPosition(lerpDuration));
+            StartCoroutine(LerpPosition());
 
         }
 
         //transform.position += Vector3.Lerp(transform.position, moveRightDistanceV3, 0.7f);
-        Debug.Log("OnMoveRight");
+        //Debug.Log("OnMoveRight");
         
 
     }
@@ -141,7 +166,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider objectCollider)
     {
-        Debug.Log("TriggerActivated");
+        //Debug.Log("TriggerActivated");
         if (objectCollider.gameObject.CompareTag("StandardBlockCollisionTriggerCollider"))
         {
             GameManager.DisplayCollisionParticleEffect(transform, this.gameObject);
@@ -149,5 +174,6 @@ public class PlayerController : MonoBehaviour
         {
             GameManager.DisplayCollisionParticleEffect(transform, this.gameObject);
         }
+
     }
 }
