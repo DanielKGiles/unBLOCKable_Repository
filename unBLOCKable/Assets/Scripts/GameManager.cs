@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     public ParticleSystem CollisionParticleEffect;
     public UIManager UIManager;
 
-    //public GameObject RestartButton;
+    public GameObject RestartButton;
     private int currentLevelIndex = 0;
 
 
@@ -21,7 +21,7 @@ public class GameManager : Singleton<GameManager>
         currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
         //LoadLevel(currentLevelIndex);
         Debug.Log("Game was started in game manager");
-        //RestartButton.SetActive(false);
+        RestartButton.SetActive(false);
     }
 
     //void Awake()
@@ -33,17 +33,23 @@ public class GameManager : Singleton<GameManager>
     {
         //DisplayCollisionParticleEffect();
         //DestroyGameObject(this.player);
+        if (RestartButton != null)
+        {
+            RestartButton.SetActive(true);
+
+        }
         Debug.Log("RestartLevel() was called");
         
         LoadLevel(Instance.currentLevelIndex);
         
+
     }
 
     public void LoadLevel(int levelIndexToLoad)
     {
         SceneManager.LoadScene(levelIndexToLoad);
-        //RestartButton.SetActive(false);
-        UIManager.HideRestartMenu();
+        RestartButton.SetActive(false);
+        //UIManager.HideRestartMenu();
 
 
     }
@@ -86,12 +92,14 @@ public class GameManager : Singleton<GameManager>
 
     private void EndRun()
     {
-        UIManager.DisplayRestartMenu();
-        //if (RestartButton != null) 
-        //{
-        //    RestartButton.SetActive(true);
+        //UIManager.DisplayRestartMenu();
 
-        //}
+
+        if (RestartButton != null)
+        {
+            RestartButton.SetActive(true);
+
+        }
         player.SetActive(false);
     }
 

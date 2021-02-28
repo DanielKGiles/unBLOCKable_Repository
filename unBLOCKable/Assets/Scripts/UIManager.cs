@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject RestartButton;
+    //public GameObject RestartButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        RestartButton.SetActive(false);
+        //RestartButton.SetActive(false);
     }
 
     public void DisplayRestartMenu() 
     {
-        RestartButton.SetActive(true);
+        //RestartButton.SetActive(true);
     }
 
     public void HideRestartMenu()
     {
-        RestartButton.SetActive(false);
+        //RestartButton.SetActive(false);
     }
 
     // Update is called once per frame
