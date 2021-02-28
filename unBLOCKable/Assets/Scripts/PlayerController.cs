@@ -30,7 +30,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject TestCube;
 
-    Vector3 targetPosition = new Vector3(4.00f,1.00f,0.00f);
+    //Vector3 targetPosition = new Vector3(4.00f,1.00f,0.00f);
+    Vector3 targetPosition;
 
 
     // Start is called before the first frame update
@@ -40,8 +41,8 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
 
-        Vector3 playerTransformPosition = transform.position;
-        Vector3 targetPosition = new Vector3(4.00f,1.00f,0.00f);
+        //Vector3 playerTransformPosition = transform.position;
+        Vector3 targetPosition = transform.position;
     }
     void OnMove(InputValue movementValue)
     {
