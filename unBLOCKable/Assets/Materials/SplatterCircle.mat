@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SplatterCircle
-  m_Shader: {fileID: 4800000, guid: 196b3c58cb5e4b24e9682e0e11591c62, type: 3}
+  m_Shader: {fileID: 4800000, guid: 99af809d51fbea3459411f402e571e69, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -110,7 +110,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 0, b: 0, a: 1}
-    - _CutTint: {r: 1, g: 0, b: 0, a: 0}
+    - _CutTint: {r: 0, g: 0.84705883, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

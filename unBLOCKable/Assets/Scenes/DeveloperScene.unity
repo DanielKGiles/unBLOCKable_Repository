@@ -656,6 +656,8 @@ MonoBehaviour:
   player: {fileID: 1595572855}
   CollisionParticleEffect: {fileID: 6032855938938158321, guid: 6bf1e2173b918b446aaade74ba3a122c,
     type: 3}
+  CherryPickupParticleEffect: {fileID: 2373045092652216801, guid: 54fd72303f9ab684380b4eae7f50afa6,
+    type: 3}
   UIManager: {fileID: 1385361800}
   RestartButton: {fileID: 1782223059}
 --- !u!4 &1336071920

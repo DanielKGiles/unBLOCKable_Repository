@@ -30,6 +30,7 @@ public class ObstacleInstantiator : MonoBehaviour
         blockLocationCounter = (int)player.transform.position[0] + distanceToFinishMakingInitialBlocks;
         cherryLocationCounter = (int)player.transform.position[0] + distanceToFinishMakingInitialBlocks;
         InstantiateInitialObstacles();
+        InstantiateInitialCherries();
     }
 
     public void InstantiateInitialObstacles()

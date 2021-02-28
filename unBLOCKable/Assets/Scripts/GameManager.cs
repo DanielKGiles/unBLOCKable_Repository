@@ -8,6 +8,7 @@ public class GameManager : Singleton<GameManager>
 {
     public GameObject player;
     public ParticleSystem CollisionParticleEffect;
+    public ParticleSystem CherryPickupParticleEffect;
     public UIManager UIManager;
 
     public GameObject RestartButton;
@@ -77,20 +78,39 @@ public class GameManager : Singleton<GameManager>
         //}
     }
 
-    public void DisplayCollisionParticleEffect(Transform playerPosition, GameObject player)
+    public void playerCollidedWithWall() 
+    {
+        DisplayCollisionParticleEffect();
+        EndRun();
+    }
+
+    public void DisplayCollisionParticleEffect()
     {
         //Debug.Log("Object is about to be instantiated");
         Vector3 particleEffectOffset = new Vector3(-1.00f, 0.00f, 0.00f);
-        Instantiate(CollisionParticleEffect, playerPosition.position, Quaternion.identity);
+        Instantiate(CollisionParticleEffect, player.transform.position, Quaternion.identity);
         //Debug.Log("Object was instantiated");
         //DestroyGameObject(player);
         
 
-        EndRun();
+        
         
     }
 
-    private void EndRun()
+    public void DisplayCherryPickupParticleEffect()
+    {
+        //Debug.Log("Object is about to be instantiated");
+        Vector3 particleEffectOffset = new Vector3(-1.00f, 0.00f, 0.00f);
+        Instantiate(CherryPickupParticleEffect, player.transform.position, Quaternion.identity);
+        //Debug.Log("Object was instantiated");
+        //DestroyGameObject(player);
+
+
+
+
+    }
+
+    public void EndRun()
     {
         //UIManager.DisplayRestartMenu();
 

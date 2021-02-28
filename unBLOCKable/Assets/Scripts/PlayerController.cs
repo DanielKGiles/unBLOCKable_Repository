@@ -169,10 +169,11 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("TriggerActivated");
         if (objectCollider.gameObject.CompareTag("StandardBlockCollisionTriggerCollider"))
         {
-            GameManager.DisplayCollisionParticleEffect(transform, this.gameObject);
-        } else if (objectCollider.gameObject.CompareTag("StandardBlockCollisionTriggerCollider"))
+            GameManager.playerCollidedWithWall();
+        } else if (objectCollider.gameObject.CompareTag("CherryPickupTrigger"))
         {
-            GameManager.DisplayCollisionParticleEffect(transform, this.gameObject);
+            GameManager.Destroy(objectCollider.gameObject);
+            GameManager.DisplayCherryPickupParticleEffect();
         }
 
     }
