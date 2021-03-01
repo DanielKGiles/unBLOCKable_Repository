@@ -58,3 +58,10 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# The following are files Ive added to be ignored
+Library/*
+
+
+# Dont ignore the following files
+!Library/LastSceneManagerSetup.txt
+
